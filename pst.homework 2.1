@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i, k;
+    int sum = 0; // сумма чисел от k до 500.
+    cout << "Введите k" << endl;
+    cin >> k;
+    for (i = k; i <= 500; i++) // задаем начальное значение с клавиатуры, конечное 500 и задаем шаг цикла - 1.
+    {
+        sum = sum + i;
+    }
+    cout << "Сумма чисел от k до 500 = " << sum << endl;         
+    return 0;
+}
