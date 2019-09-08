@@ -1,0 +1,33 @@
+#include<stdlib.h>
+#include<conio.h>
+#include<iostream>
+ 
+using namespace std;
+ 
+int main() {
+    const int N=20;
+    int t[N],i,tmp;
+ 
+    for(i=0;i<N;i++) {
+        t[i] = rand()%20;
+        cout << t[i] << " ";
+    }
+    cout << endl;
+    i = 0;
+    while (i < N) {
+        if (i == 0 || t[i - 1] <= t[i])
+            i++;
+        else {
+            tmp = t[i];
+            t[i] = t[i - 1];
+            t[i - 1] = tmp;
+            i--;
+        }
+    }
+ 
+    for(i=0;i<N;i++)
+    cout << t[i] << " ";
+    cout << endl;
+    system("sleep 1s");
+    return 0;
+}
