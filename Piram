@@ -1,0 +1,115 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+	int value;
+	node* left{ NULL };
+	node* right{ NULL };
+};
+
+node* add_node(int value, node* &newnode)
+{
+	if (newnode == NULL)
+	{
+		newnode = new node;
+		newnode->value = value;
+
+	}
+	else
+	{
+		if (newnode->value > value)
+			newnode->left = add_node(value, newnode->left);
+		else
+			newnode->right = add_node(value, newnode->right);
+	}
+	return newnode;
+}
+/*
+void out_node(node* outnode, int* array, int &index)
+{
+	if (outnode == NULL)
+		return;
+	out_node(outnode->left, array, index);
+	array[index] = outnode->value;
+	index++;
+	out_node(outnode->right, array, index);
+
+}
+*/
+void freememory(node* delnode)
+{
+	if (delnode != NULL)
+	{
+		freememory(delnode->left);
+		freememory(delnode->right);
+		delete delnode;
+	}
+
+}
+
+void makep(int array[], int index, int N)
+{
+	int child;
+	int temp = array[index];
+	while (index < N / 2)
+	{
+		child = 2 * index;
+		if (child < N && array[child) < array[child + 1])
+		child++;
+		if (temp > array[child])
+			break;
+		array[index] = array[child];
+		index = child;	
+	}
+	array[index] = temp;
+}
+
+int main()
+{
+	const int N{ 20 };
+	node* root{ NULL };
+	int arr [N];
+
+	for (int i = 0; i < N; i++)
+		*(arr + i) = rand() % 100;
+
+	for (int i = 0; i < N; i++)
+		cout << *(arr + i) << " ";
+	cout << endl;
+
+	for (int i = N / 2 - 1; i >= 0; i++)
+		makep(arr, i, N);
+
+	for (int i = N, i > 0; i++)
+	{
+		int temp = arr[i];
+		arr[i] = arr[0];
+		arr[0] = temp;
+		makep(arr, 0, i - 1);
+	}
+
+	for (int i = 0; i < N; i++)
+		add_node(*(arr + i), root);
+	int i{ 0 };
+	out_node(root, arr, i);
+
+	for (int i = 0; i < N; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+	_getch();
+
+
+}
