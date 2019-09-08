@@ -1,0 +1,78 @@
+#include <iostream>
+#include <stdio.h>
+
+	using namespace std;
+	int main(){
+		const int N = 10;
+		int map[N] [N] = {0};
+		int x,y,a;
+//расстановка рокаблей
+		for (int i = 0; i < 2; i++)
+            {
+                x=rand() % N;
+                y=rand() % N;
+                map[x] [y] = 1;
+
+            }
+
+//********************Главный цыкл**************************
+        while (true)
+        {
+
+        bool korabl = false;
+//вывод поля
+            for (int i = 0; i < N; i++)
+            {
+            for (int j = 0; j < N; j++)
+            {
+                cout << map[i] [j];
+            }
+            cout << endl;
+            }
+
+            cout << "******************" << endl;
+//*************************Стрельба**************************
+            cout << "Введите кординаты цели: " << endl;
+            cin >> x;
+            cin >> y;
+            if (map [x] [y] == 1)
+            {
+                cout << "Попал!!!" << endl;
+                map [x] [y] = 7;
+//Проверка на наличие кораблей на поле
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (map[i] [j] == 1)
+                    {
+                        korabl = true;
+                        break;
+                    }
+                }
+                if (korabl == true)
+                {
+                    break;
+                }
+
+            }
+
+            if (korabl == false)
+            {
+                cout << "Победа" << endl;
+                break;
+            }
+
+            }
+            else
+            {
+                cout << "Промазал." << endl;
+                map [x] [y] = 8;
+            }
+        system("sleep 1s");
+        system("clear");
+        }
+
+        return 0;
+
+	}
