@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i, r, p, t, z;
+    cin >> t;
+    cin >> p;
+    z=t;
+    for (i = 2; i <= p; i++) 
+    {
+        t = t * z;
+        r=r+t;
+         
+    }  
+    cout << "t в степени p" << t << endl;    
+    return 0;
+}
