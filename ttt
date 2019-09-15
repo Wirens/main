@@ -1,0 +1,94 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+//int main()
+//{
+//	setlocale(LC_ALL, "Russian");
+//	int des, dv, t, dvo[100];
+//	cout << "Перевод десятичного числа в двоичное." << endl;
+//	cout << "Введите число: ";
+//	cin >> des;
+//	t = 0;
+//	if (des == 0)
+//	{
+//		cout << "Двоичное: 0" << endl;
+//	}
+//	else
+//	{
+//		while (des > 1)
+//		{
+//			dv = des % 2;
+//			dvo[t] = dv;
+//			des /= 2;
+//			t++;
+//		}
+//		t--;
+//		cout << "Двоичное: ";
+//		cout << 1;
+//		while (t >= 0)
+//		{
+//			cout << dvo[t];
+//			t--;
+//		}
+//		cout << endl;
+//	}
+//	_getch();
+//	return 0;
+//}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void recurs(int *A, int start, int end)
+{
+	int middle, left, right, j;
+	int mas[100];
+	middle = (start + end) / 2;
+	left = start; 
+	right = middle + 1; 
+	for (j = start; j <= end; j++) 
+		if ((left <= middle) & ((right > end) | (A[left] < A[right])))
+		{
+			mas[j] = A[left];
+			left++;
+			
+		}
+		else
+		{
+			mas[j] = A[right];
+			right++;
+		}
+	for (j = start; j <= end; j++) A[j] = mas[j];
+};
+void sort(int *A, int left, int right)
+{
+	{
+		if (left < right)
+		{
+			sort(A, left, (left + right) / 2);
+			sort(A, (left + right) / 2 + 1, right);
+			recurs(A, left, right);
+		}
+	}
+};
+void main()
+{
+	setlocale(LC_ALL, "Rus");
+	int i, n;
+	int *A = new int[100];
+	cout << "Размер массива: "; cin >> n;
+	for (i = 1; i <= n; i++)
+	{
+		A[i] = rand() % 100 + 1;
+	}
+	cout << "Исходный массив: ";
+	for (i = 1; i <= n; i++) cout << A[i] << " "; cout << endl;
+	sort(A, 1, n);
+	cout << "Упорядоченный массив: ";
+	for (i = 1; i <= n; i++) cout << A[i] << " ";
+	delete[]A;
+	_getch();
+
+}
