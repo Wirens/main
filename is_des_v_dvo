@@ -1,0 +1,39 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int des, dv, t, dvo[100];
+	cout << "Перевод десятичного числа в двоичное." << endl;
+	cout << "Введите число: ";
+	cin >> des;
+	t = 0;
+	if (des == 0) 
+	{ 
+		cout << "Двоичное: 0" << endl;
+	}
+	else
+	{
+		while (des > 1)
+		{
+			dv = des % 2;
+			dvo[t] = dv;
+			des /= 2;
+			t++;
+		}
+		t--;
+		cout << "Двоичное: ";
+		cout << 1;
+		while (t >= 0)
+		{
+			cout << dvo[t];
+			t--;
+		}
+		cout << endl;
+	}
+	_getch();
+	return 0;
+}
