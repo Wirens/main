@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+class Counter 
+{
+    public:
+    int begin;
+    int end;
+    const int max = 100;
+    Counter ()
+    {
+        begin=0;
+    }
+  //  bool init(int k0)
+  //  {
+  //      if (k0 > 100);
+  //      return false;
+  // }
+void run() //Сам Счетчик
+{
+    for(int i = begin; i <= end; i++)
+    cout << i << endl;
+    cout << "end";
+    begin = 0;
+}
+};
+
+int main()
+{
+    Counter obj1;
+    cout << "Vvedite nachalo ";
+    cin >> obj1.begin;
+    cout << "Vvedite konec ";
+    cin >> obj1.end;
+    obj1.run();
+}
