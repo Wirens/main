@@ -1,0 +1,73 @@
+#include <iostream>
+
+using namespace std;
+
+class Complex
+
+{
+public:
+	int a, a1, a_res, a_proisv, b, b1, b_res, b_proisv;
+	char i, i1, znak, znak1;
+	void input(int aa, char cc, char ii, int bb)
+	{
+		a = aa;
+		b = bb;
+		i = ii;
+		znak = cc;
+	}
+	void input1(int aa, char cc, char ii, int bb)
+	{
+		a1 = aa;
+		b1 = bb;
+		i1 = ii;
+		znak1 = cc;
+	}
+	void summ() //сложение
+	{
+		a_res = a + a1;
+		b_res = b + b1;
+		if (b_res < 0) {
+			cout << a_res << b_res << "i" << endl;
+		}
+		else {
+			cout << a_res << "+" << "i" << b_res << endl;
+		}
+	}
+	void proizvod() //произведение
+	{
+	a_proisv = (a*a1) - (b*b1);
+	b_proisv = (a*b1) + (a1*b);
+	if (b_proisv < 0) {
+		cout << a_proisv << b_proisv << (char)(105) << endl;
+	}
+	else {
+		cout << a_proisv << (char)(43) << b_proisv << (char)(105) << endl;
+	}
+	}
+		
+};
+
+int main()
+{
+
+	int a, d, a1, d1;
+	char znak, znak1, i, i1;
+
+	cout << "Vvedite pervoe chislo: ";
+	cin >> a >> znak >> i >> d;
+	if (znak == (char)(45)) {
+		znak = -znak;
+	}
+	cout << "Vvedite vtoroe chislo: ";
+	cin >> a1 >> znak1 >> i1 >> d1;
+	if (znak1 == (char)(45)) {
+		znak1 = -znak1;
+	}
+	Complex obj;
+	obj.input(a, znak, i, d);
+	obj.input1(a1, znak1, i1, d1);
+	//obj.summ();
+	obj.proizvod();
+	system("pause");
+	
+}
